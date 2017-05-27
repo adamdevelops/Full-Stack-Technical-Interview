@@ -142,6 +142,7 @@ graph.insert_edge(8, 'e', 'f')
 graph.insert_edge(9, 'f', 'g')
 
 print(ques3(graph))
+# O(nlogn)
 
 
 '''

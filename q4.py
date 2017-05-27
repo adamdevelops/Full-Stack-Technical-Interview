@@ -20,8 +20,8 @@ and the answer would be 3.
 def ques4(T, r, n1, n2):
     n1_parent = []
     while n1 != r:
-        n1 = parent(T, n1)
-        n1_parent.append(n1)
+        n1 = parent(T, n1)  # O(n)
+        n1_parent.append(n1)  # O(1)
     if len(n1_parent) == 0:
         return -1
     while n2 != r:
@@ -43,3 +43,4 @@ def parent(T, n):
 
 
 print question4([[0,1,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[1,0,0,0,1],[0,0,0,0,0]],3,1,4)
+# O(n^2)

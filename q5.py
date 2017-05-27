@@ -71,3 +71,6 @@ ll.append(n3)
 ll.append(n4)
 ll.append(n5)
 ##############################################
+
+print ques5(ll, 3)
+# O(n)

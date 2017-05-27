@@ -5,8 +5,8 @@ Given a string a, find the longest palindromic substring contained in a.
 Your function definition should look like question2(a), and return a string.
 '''
 
-
-def palindromes(a):
+# palindromes()
+def ques2(a):
     a = a.lower()
     results = []
 
@@ -21,4 +21,5 @@ def palindromes(a):
     for i in results:
         print i
 
-palindromes("geeksskeeg")
+ques2("geeksskeeg")
+# O(2n ^2 + n)

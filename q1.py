@@ -8,17 +8,17 @@ Given two strings s and t, determine whether some anagram of t is a substring of
 
 '''
 
+# is_anagram()
+def ques1(s, t):
+    s = sorted(s)  # O(n)
+    t = sorted(t)  # O(n)
 
-def is_anagram(s, t):
-    s = sorted(s)
-    t = sorted(t)
-
-    if len(t) > len(s):
+    if len(t) > len(s):   # O(1)
         return "Anagram not possible"
 
     chars = []
 
-    for index, char1 in enumerate(s):
+    for index, char1 in enumerate(s):   # O(nm)
         for index, char2 in enumerate(t):
             if char1 == char2:
                 chars.append(char2)
@@ -28,4 +28,5 @@ def is_anagram(s, t):
         print "There is an anagram found for the two inputted strings"
 
 
-is_anagram("udacity", "ad")
+ques1("udacity", "ad")
+# O(nlogn + nlogn + n^2)
