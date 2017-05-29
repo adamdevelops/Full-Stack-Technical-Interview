@@ -34,10 +34,13 @@ def ques5(ll, m):
     head = ll
     current = head
 
+    end_found = False
+
     # Find the length of the Linked List
     while current.next:
-        current = current.next
-        count += 1
+            current = current.next
+            count += 1
+
 
     # Depth of the mth element from the end of the Linked List
     '''
@@ -46,7 +49,7 @@ def ques5(ll, m):
     from the end of the linked List
     '''
     depth = count - m
-    depth += 2
+    depth += 1
 
     # Reset current to the first node
     current = head
@@ -54,9 +57,11 @@ def ques5(ll, m):
     for i in range(1, depth):
         current = current.next
 
-    return current
+    return current.data
 
 # Test cases #################################
+# Test Case 1
+
 # Set up some Elements
 n1 = Node(1)
 n2 = Node(2)
@@ -70,7 +75,72 @@ ll.append(n2)
 ll.append(n3)
 ll.append(n4)
 ll.append(n5)
+
+print ques5(n1, 3)
+
+##############################################
+# Test Case 2
+
+# Set up some Elements
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(3)
+n4 = Node(4)
+n5 = Node(5)
+n6 = Node(6)
+n7 = Node(7)
+n8 = Node(8)
+n9 = Node(9)
+n10 = Node(10)
+n11 = Node(11)
+n12 = Node(12)
+n13 = Node(13)
+
+# Start setting up a LinkedList
+ll = LinkedList(n1)
+ll.append(n2)
+ll.append(n3)
+ll.append(n4)
+ll.append(n5)
+ll.append(n6)
+ll.append(n7)
+ll.append(n8)
+ll.append(n9)
+ll.append(n10)
+ll.append(n11)
+ll.append(n12)
+ll.append(n13)
+
+print ques5(n1, 6)
+##############################################
+# Test Case 3
+
+# Set up some Elements
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(3)
+n4 = Node(4)
+n5 = Node(5)
+n6 = Node(6)
+n7 = Node(7)
+
+
+# Start setting up a LinkedList
+ll = LinkedList(n1)
+ll.append(n2)
+ll.append(n3)
+ll.append(n4)
+ll.append(n5)
+ll.append(n6)
+ll.append(n7)
+
+print ques5(n1, 4)
 ##############################################
 
-print ques5(ll, 3)
+
+
+
+
+
+
 # O(n)

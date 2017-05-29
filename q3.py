@@ -115,37 +115,42 @@ def ques3(graph):
         if root1 != root2:
             if bool(A.has_key(v1)):
                 A[v1].append((w,v2))
-                graph.union(root1, root2)
+                graph.union(parent, rank, root1, root2)
             else:
-                A[v1] = (w,v2)
+                A[v1] = [(w,v2)]
                 graph.union(parent, rank, root1, root2)
     return A
 
 
 
 graph = Graph()
-# graph.insert_edge(10, 0, 1)
-# graph.insert_edge(6, 0, 2)
-# graph.insert_edge(5, 0, 3)
-# graph.insert_edge(15, 1, 3)
-# graph.insert_edge(4, 2, 3)
+graph.insert_edge(10, 'a', 'c')
+graph.insert_edge(6, 'a', 'p')
+graph.insert_edge(5, 'a', 'y')
+graph.insert_edge(15, 'c', 'y')
+graph.insert_edge(4, 'p', 'y')
 
-graph.insert_edge(2, 'a', 'b')
-graph.insert_edge(3, 'a', 'c')
-graph.insert_edge(3, 'a', 'd')
-graph.insert_edge(4, 'b', 'c')
-graph.insert_edge(3, 'b', 'e')
-graph.insert_edge(5, 'c', 'd')
-graph.insert_edge(1, 'c', 'e')
-graph.insert_edge(7, 'd', 'f')
-graph.insert_edge(8, 'e', 'f')
-graph.insert_edge(9, 'f', 'g')
+graph1 = Graph()
+graph1.insert_edge(2, 'a', 'b')
+graph1.insert_edge(3, 'a', 'c')
+graph1.insert_edge(3, 'a', 'd')
+graph1.insert_edge(4, 'b', 'c')
+graph1.insert_edge(3, 'b', 'e')
+graph1.insert_edge(5, 'c', 'd')
+graph1.insert_edge(1, 'c', 'e')
+graph1.insert_edge(7, 'd', 'f')
+graph1.insert_edge(8, 'e', 'f')
+graph1.insert_edge(9, 'f', 'g')
+
+graph2 = Graph()
+graph2.insert_edge(4, 'a', 'b')
+graph2.insert_edge(6, 'b', 'c')
+graph2.insert_edge(1, 'c', 'f')
+graph2.insert_edge(2, 'a', 'f')
+graph2.insert_edge(5, 'b', 'f')
 
 print(ques3(graph))
+print(ques3(graph1))
+print(ques3(graph2))
+
 # O(nlogn)
-
-
-'''
-http://www.pythontutor.com/live.html#code=class%20Node%28object%29%3A%0A%20%20%20%20def%20__init__%28self,%20value%29%3A%0A%20%20%20%20%20%20%20%20self.value%20%3D%20value%0A%20%20%20%20%20%20%20%20self.edges%20%3D%20%5B%5D%0A%0Aclass%20Edge%28object%29%3A%0A%20%20%20%20def%20__init__%28self,%20value,%20node_from,%20node_to%29%3A%0A%20%20%20%20%20%20%20%20self.value%20%3D%20value%0A%20%20%20%20%20%20%20%20self.node_from%20%3D%20node_from%0A%20%20%20%20%20%20%20%20self.node_to%20%3D%20node_to%0A%0Aclass%20Graph%28object%29%3A%0A%20%20%20%20def%20__init__%28self,%20nodes%3D%5B%5D,%20edges%3D%5B%5D%29%3A%0A%20%20%20%20%20%20%20%20self.nodes%20%3D%20nodes%0A%20%20%20%20%20%20%20%20self.edges%20%3D%20edges%0A%0A%20%20%20%20def%20insert_edge%28self,%20new_edge_val,%20node_from_val,%20node_to_val%29%3A%0A%20%20%20%20%20%20%20%20from_found%20%3D%20None%0A%20%20%20%20%20%20%20%20to_found%20%3D%20None%0A%20%20%20%20%20%20%20%20for%20node%20in%20self.nodes%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20node_from_val%20%3D%3D%20node.value%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20from_found%20%3D%20node%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20node_to_val%20%3D%3D%20node.value%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20to_found%20%3D%20node%0A%20%20%20%20%20%20%20%20if%20from_found%20%3D%3D%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20from_found%20%3D%20Node%28node_from_val%29%0A%20%20%20%20%20%20%20%20%20%20%20%20self.nodes.append%28from_found%29%0A%20%20%20%20%20%20%20%20if%20to_found%20%3D%3D%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20to_found%20%3D%20Node%28node_to_val%29%0A%20%20%20%20%20%20%20%20%20%20%20%20self.nodes.append%28to_found%29%0A%20%20%20%20%20%20%20%20new_edge%20%3D%20Edge%28new_edge_val,%20from_found,%20to_found%29%0A%20%20%20%20%20%20%20%20from_found.edges.append%28new_edge%29%0A%20%20%20%20%20%20%20%20to_found.edges.append%28new_edge%29%0A%20%20%20%20%20%20%20%20self.edges.append%28new_edge%29%0A%0A%20%20%20%20def%20get_edge_list%28self%29%3A%0A%20%20%20%20%20%20%20%20%22%22%22Don't%20return%20a%20list%20of%20edge%20objects!%0A%20%20%20%20%20%20%20%20Return%20a%20list%20of%20triples%20that%20looks%20like%20this%3A%0A%20%20%20%20%20%20%20%20%28Edge%20Value,%20From%20Node%20Value,%20To%20Node%20Value%29%22%22%22%0A%20%20%20%20%20%20%20%20print%20len%28self.nodes%29%0A%20%20%20%20%20%20%20%20edge_list%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20edge_object%20in%20self.edges%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20edge%20%3D%20%28edge_object.value,%20edge_object.node_from.value,%20edge_object.node_to.value%29%0A%20%20%20%20%20%20%20%20%20%20%20%20edge_list.append%28edge%29%0A%20%20%20%20%20%20%20%20return%20edge_list%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20def%20get_node_list%28self%29%3A%0A%20%20%20%20%20%20%20%20%22%22%22Don't%20return%20a%20list%20of%20edge%20objects!%0A%20%20%20%20%20%20%20%20Return%20a%20list%20of%20triples%20that%20looks%20like%20this%3A%0A%20%20%20%20%20%20%20%20%28Edge%20Value,%20From%20Node%20Value,%20To%20Node%20Value%29%22%22%22%0A%20%20%20%20%20%20%20%20node_list%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20node%20in%20self.nodes%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20node%20%3D%20%28node.value%29%0A%20%20%20%20%20%20%20%20%20%20%20%20node_list.append%28node%29%0A%20%20%20%20%20%20%20%20return%20node_list%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20def%20make_set%28self,%20vertex,%20parent,%20rank%29%3A%0A%20%20%20%20%20%20%20%20parent%5Bvertex%5D%20%3D%20vertex%0A%20%20%20%20%20%20%20%20rank%5Bvertex%5D%20%3D%200%0A%0A%0Adef%20ques3%28graph%29%3A%0A%20%20%20%20A%20%3D%20%5B%5D%0A%0A%20%20%20%20nodes%20%3D%20graph.get_node_list%28%29%0A%20%20%20%20len_nodes%20%3D%20len%28nodes%29%0A%0A%20%20%20%20parent%20%3D%20%7B%7D%0A%20%20%20%20rank%20%3D%20%7B%7D%0A%0A%20%20%20%20for%20i,%20node%20in%20enumerate%28nodes%29%3A%0A%20%20%20%20%20%20%20%20%23%20parent.append%28node%29%0A%20%20%20%20%20%20%20%20%23%20rank.append%280%29%0A%20%20%20%20%20%20%20%20graph.make_set%28node,%20parent,%20rank%29%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20print%20parent%0A%20%20%20%20%20%20%20%20%0A%0A%0A%0Agraph%20%3D%20Graph%28%29%0Agraph.insert_edge%282,%20'a',%20'b'%29%0Agraph.insert_edge%283,%20'a',%20'c'%29%0Agraph.insert_edge%283,%20'a',%20'd'%29%0Agraph.insert_edge%284,%20'b',%20'c'%29%0Agraph.insert_edge%283,%20'b',%20'e'%29%0Agraph.insert_edge%285,%20'c',%20'd'%29%0Agraph.insert_edge%281,%20'c',%20'e'%29%0Agraph.insert_edge%287,%20'd',%20'f'%29%0Agraph.insert_edge%288,%20'e',%20'f'%29%0Agraph.insert_edge%289,%20'f',%20'g'%29%0A%0Aprint%28ques3%28graph%29%29%0A&cumulative=false&curInstr=432&heapPrimitives=false&mode=display&origin=opt-live.js&py=2&rawInputLstJSON=%5B%5D&textReferences=false
-
-'''

@@ -10,23 +10,20 @@ Given two strings s and t, determine whether some anagram of t is a substring of
 
 # is_anagram()
 def ques1(s, t):
-    s = sorted(s)  # O(n)
-    t = sorted(t)  # O(n)
+    string_dict = {}
 
     if len(t) > len(s):   # O(1)
         return "Anagram not possible"
 
-    chars = []
+    for char in t:
+        string_dict[char] = 1
+        if char in s:
+            string_dict[char] += 1
 
-    for index, char1 in enumerate(s):   # O(nm)
-        for index, char2 in enumerate(t):
-            if char1 == char2:
-                chars.append(char2)
-                # print "Found"    ---TEST
-
-    if chars == t:
-        print "There is an anagram found for the two inputted strings"
+    return all(string_dict[char]==2 for char in string_dict)
 
 
-ques1("udacity", "ad")
+print ques1("stackoverflow", "rover")
+print ques1("udacity", "ad")
+print ques1("animal", "fan")
 # O(nlogn + nlogn + n^2)

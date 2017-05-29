@@ -22,4 +22,7 @@ def ques2(a):
         print i
 
 ques2("geeksskeeg")
+ques2("racecar")
+ques2("neveroddoreven")
+
 # O(2n ^2 + n)

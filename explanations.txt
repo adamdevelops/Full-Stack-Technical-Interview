@@ -1,20 +1,30 @@
 Question 1
 
-The function takes in two letters and compares them to see if the second inputted string is an anagram within the first inputted string. To better see the anagram, I sort both inputted strings in the variables "s" and "t". There is a conditional statement that make sure that "t" is not greater than "s" otherwise an anagram would not be possible as the string "s" would not contain enough letters to even from string "t". I used an array to store the alike letters found in the strings "s" and "t". The efficiency of this code would be O(n) for the for loops and O(1) for all the conditional statements as well as the sorting. The overall efficiency of this function would be O(n^2) due to the number of letters contained with in both inputted strings.
+The function takes in two letters and compares them to see if the second inputted string is an anagram within the first inputted string. To better see the anagram, I sort both inputted strings in the variables "s" and "t". There is a conditional statement that make sure that "t" is not greater than "s" otherwise an anagram would not be possible as the string "s" would not contain enough letters to even from string "t". I used an array to store the alike letters found in the strings "s" and "t". The efficiency of this code would be O(n) for the for loops and O(1) for all the conditional statements as well as the sorting. 
+
+The overall efficiency of this function would be O(len(s)) and the space efficiency is O(1).
 
 Question 2
 
-The function takes in a word and finds a list of palindromes for the inputted string. To make sure there is consistent results, the input string is made to be all lower case as not to conflict with the if-conditional statements. The for loop goes through the string and verifies if the letters it finds are palindromes, and adds them to the result array to show for later. The efficiency of this function would be O(2n^2 + n).
+The function takes in a word and finds a list of palindromes for the inputted string. To make sure there is consistent results, the input string is made to be all lower case as not to conflict with the if-conditional statements. The for loop goes through the string and verifies if the letters it finds are palindromes, and adds them to the result array to show for later. 
+
+The efficiency of this function would be O(2n^2 + n) and the space efficiency is O(n).
 
 Question 3
 
-This function takes in a graph and find its corresponding minimum spanning tree. There are helper classes that define Node and Edge objects. The Graph class contains the functions to create the graph as well as the nodes and edges that were made through the Node and Edge classes. It also contains the helper functions to create disjointed sets (make_set()), find the parent of nodes (find()), and join to nodes together based on rank (union()). To start off we create disjointed sets for each node in the graph. Then sort the edges array for the graph by their weights. After, there is a for loop that goes through the sorted edges, and creates the minimum spanning tree and outputs its adjacency list. The overall efficiency of this function would be  
+This function takes in a graph and find its corresponding minimum spanning tree. There are helper classes that define Node and Edge objects. The Graph class contains the functions to create the graph as well as the nodes and edges that were made through the Node and Edge classes. It also contains the helper functions to create disjointed sets (make_set()), find the parent of nodes (find()), and join to nodes together based on rank (union()). To start off we create disjointed sets for each node in the graph. Then sort the edges array for the graph by their weights. After, there is a for loop that goes through the sorted edges, and creates the minimum spanning tree and outputs its adjacency list. 
+
+The overall efficiency of this function would be O(E * log(E)) and the space efficiency is O(n).
 
 Question 4
 
-This function finds the Least Common Ancestor (LCA) between two nodes within a binary search tree using. I created an array to store the parent elements of the first inputted node (n1). Then I search for the parent of node 1 until it equals the root node. A conditional statement was added to determine after trying to find the parent node of node 1 to see if the n1 parent array contains anything. If there are no elements within the array then it is not possible to find the LCA between n1 and n2. There is another loop that finds the parent of n2 and verifies if it matches any of the parent nodes for n1. The overall efficiency of this function would be O(n^2).
+This function finds the Least Common Ancestor (LCA) between two nodes within a binary search tree using. I created an array to store the parent elements of the first inputted node (n1). Then I search for the parent of node 1 until it equals the root node. A conditional statement was added to determine after trying to find the parent node of node 1 to see if the n1 parent array contains anything. If there are no elements within the array then it is not possible to find the LCA between n1 and n2. There is another loop that finds the parent of n2 and verifies if it matches any of the parent nodes for n1. 
+
+The overall efficiency of this function would be O(nlogn) and the space efficiency is O(1).
 
 Question 5
 
-This function finds the mth element from the last element with in a linked list. There are helper classes with functions to create the nodes and the linked list itself. First I find the length of the linked list by changing the current variable value to the current.next value until I reach a node that does not contain a current.next value. Using the length, it will be used to calculate what depth of the mth node from the end of the linked list. Then, I reset the current variable to the first value in the linked list to find its value through using a for loop with the depth of mth valu and iterating through the linked list until we find the value of the mth element and returning it. The efficiency of this function would be O(n).
+This function finds the mth element from the last element with in a linked list. There are helper classes with functions to create the nodes and the linked list itself. First I find the length of the linked list by changing the current variable value to the current.next value until I reach a node that does not contain a current.next value. Using the length, it will be used to calculate what depth of the mth node from the end of the linked list. Then, I reset the current variable to the first value in the linked list to find its value through using a for loop with the depth of mth valu and iterating through the linked list until we find the value of the mth element and returning it. 
+
+The efficiency of this function would be O(n) and the space efficiency is O(n).
 

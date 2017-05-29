@@ -18,29 +18,51 @@ and the answer would be 3.
 '''
 
 def ques4(T, r, n1, n2):
-    n1_parent = []
-    while n1 != r:
-        n1 = parent(T, n1)  # O(n)
-        n1_parent.append(n1)  # O(1)
-    if len(n1_parent) == 0:
-        return -1
-    while n2 != r:
-        n2 = parent(T, n2)
-        if n2 in n1_ps:
+    while n1 != r and n2 = r:
+        n1 = parent(T, r, n1)  # O(n)
+        n2 = parent(T, r, n2)
+
+        if n1 == n2:
             return n2
-    return -1
+
+    return r
 
 
-def parent(T, n):
+
+def parent(T, r, n):
 	#return parent of n if it exists, otherwise return -1
-    numrows = len(T)
-    for i in range(numrows):
-        if T[i][n] == 1:
-            return i
+    numrows = len(T) - 1
+
+    if T[r][n] == 1:
+        return r
+    else:
+
+        if r > n:
+            # left to right tree traversal
+
+            i = 0
+            while i <= numrows:
+                if T[i][n] == 1:
+                    return i
+                i += 1
+
+        elif r < n:
+            #  right to left tree traversal
+
+            i = numrows
+            while i >= 0:
+                if T[i][n] == 1:
+                    return i
+                i -= 1
+
+        else:
+            return r
+
+
     return -1
 
 
-
-
-print question4([[0,1,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[1,0,0,0,1],[0,0,0,0,0]],3,1,4)
+print ques4([[0,1,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[1,0,0,0,1],[0,0,0,0,0]],3,1,4)
+print ques4([[0,1,0,0,0,1],[0,0,0,0,0,0],[0,0,0,0,0,0],[1,0,0,0,1,0],[0,0,0,0,0,0],[0,0,0,0,0,0]],3,1,5)
+print ques4([[0,1,0,0,0,1,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[1,0,0,0,1,0,0],[0,0,0,0,0,0,0],[0,0,1,0,0,0,1],[0,0,0,0,0,0,0]],3,2,6)
 # O(n^2)
